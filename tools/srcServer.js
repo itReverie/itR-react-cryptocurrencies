@@ -6,9 +6,16 @@ import open from 'open';
 
 /* eslint-disable no-console */
 
-const port = process.env.port || 3000;
-const app = express();
+
+
+
+var app     = express();
 const compiler = webpack(config);
+const port = process.env.port || 5000;
+
+app.set('port', (process.env.PORT || 5000));
+
+
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
