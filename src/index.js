@@ -1,7 +1,9 @@
+/*eslint-disable import/default*/
+
 import 'babel-polyfill'; // There are set of features that Babel cannot transpile so we are adding all
 import React from 'react';
 import { render } from 'react-dom';
-import configureStore from './store/configureStore';
+import configureStore from './store/configureStore.dev';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router'; // browserHistory give us nice urls
 import routes from './routes';
