@@ -6,7 +6,7 @@ import open from 'open';
 
 /* eslint-disable no-console */
 
-const port = 5000;
+const port = process.env.port || 3000;
 const app = express();
 const compiler = webpack(config);
 
