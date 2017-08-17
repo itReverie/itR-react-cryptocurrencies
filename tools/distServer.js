@@ -5,11 +5,13 @@ import compression from 'compression';
 
 /*eslint-disable no-console */
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 5000;
+//app.set('port', (process.env.PORT || 5000));
 const app = express();
 
 app.use(compression());
 app.use(express.static('dist'));
+
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
