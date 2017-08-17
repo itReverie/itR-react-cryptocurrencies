@@ -5,5 +5,7 @@ To run in development:  `npm start -s (optional)`
 
 To build the deployment package: `npm run build`
 
+Deployed in `https://itr-crypto-portfolio.herokuapp.com/portfolio`
+
 ![logic]( http://www.itreverie.com/githubimages/itR-crypto-portfolio.png)
 
