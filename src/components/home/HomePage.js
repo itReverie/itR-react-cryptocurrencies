@@ -9,7 +9,7 @@ class HomePage extends React.Component{
         <h1>Cryptocurrency Portfolio</h1>
         <h4>Assumptions</h4>
         <ul>
-          <li>You can buy maximum 1000</li>
+          <p>You can buy maximum 1000</p>
         </ul>
       </div>
     );

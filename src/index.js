@@ -8,9 +8,12 @@ import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router'; // browserHistory give us nice urls
 import routes from './routes';
 import {loadCurrencies} from './actions/currenciesActions';
-import './styles/styles.css'; // Webpack can import CSS files just as it does javascripts so we do all those references in one file rather than having styles in the html and js in this file
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/toastr/build/toastr.min.css';
+import './styles/reset.css';
+import './styles/small.css';
+import './styles/medium.css';
+import './styles/large.css';
+//import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+//import '../node_modules/toastr/build/toastr.min.css';
 
 //Set the store redux
 //If we pass an initial state parameter it will overwrite the initial state we are passing in each reducer
