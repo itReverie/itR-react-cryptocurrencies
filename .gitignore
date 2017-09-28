@@ -4,3 +4,21 @@
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/*.*
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Dependency directories
+node_modules
+npm-debug.log
+
+# Optional npm cache directory
+.npm
+
+
