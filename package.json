@@ -18,7 +18,7 @@
     "postbuild": "babel-node tools/distServer.js"
   },
   "author": "Brenda Jimenez",
-  "license": "(MIT) UNLICENSED",
+  "license": "CPL-1.0",
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
