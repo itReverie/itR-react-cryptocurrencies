@@ -46,7 +46,7 @@ export function updateCurrencyAmount(currrencies, currencyUpdated){
            ...currrencies.filter(currency => currency.name !== currencyUpdated.name),
            Object.assign({},currencyUpdated)
          ];
-    return dispatch(updateCurrencyAmountSuccess(test));
+    return dispatch(updateCurrencyAmountSuccess(currrencies));
 
 
     //return dispatch(loadCurrenciesSuccess(cryptoCurrencies));

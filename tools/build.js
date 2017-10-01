@@ -7,8 +7,9 @@ import webpack from 'webpack';
 import webpackConfig from '../webpack.config.prod';
 import colors from 'colors';
 
+//process.env.PORT = 5000
 process.env.NODE_ENV = 'production'; // this assures the Babel dev config (for hot reloading) doesn't apply.
-//process.env.PORT = 5000;
+//'process.env.PORT' : JSON.stringify('5000')
 //app.set('port', (process.env.PORT || 5000));
 
 console.log('Generating minified bundle for production via Webpack. This will take a moment...'.blue);
