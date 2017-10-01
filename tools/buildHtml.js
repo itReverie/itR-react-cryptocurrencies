@@ -15,10 +15,8 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
   const $ = cheerio.load(markup);
 
   // since a separate spreadsheet is only utilized for the production build, need to dynamically add this here.
-  $('head').prepend('<link rel="stylesheet" href="reset.css">');
-  $('head').prepend('<link rel="stylesheet" href="small.css">');
-  $('head').prepend('<link rel="stylesheet" href="medium.css">');
-  $('head').prepend('<link rel="stylesheet" href="large.css">');
+  $('head').prepend('<link rel="stylesheet" href="../src/scss/styles.css">');
+
 
 
   fs.writeFile('dist/index.html', $.html(), 'utf8', function (err) {
