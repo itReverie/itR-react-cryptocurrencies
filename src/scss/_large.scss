@@ -1,0 +1,17 @@
+/*  ----------------------- BODY --------------------------- */
+
+
+/*  ----------------------- NAVIGATION --------------------------- */
+header {
+  a {
+    margin-left: $gutter;
+    border-left: 1px solid rgba(0,0,0,0.3);
+  }
+  a {width: auto;}
+  a:last-child{border-right: 1px solid rgba(0,0,0,0.3);}
+  a {
+    padding: .5rem 1rem;
+  }
+} // end nav
+
+

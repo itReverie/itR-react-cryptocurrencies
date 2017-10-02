@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router'; // browserHistory give us nice urls
 import routes from './routes';
 import {loadCurrencies} from './actions/currenciesActions';
-import './styles/styles.css';
+import './index.scss';
 
 //import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //import '../node_modules/toastr/build/toastr.min.css';

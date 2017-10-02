@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import NumberInput from '../common/NumberInput';
 
 const CryptoCurrencyRow = ({cryptoCurrency, errors, onChange}) =>{

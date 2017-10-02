@@ -35,7 +35,10 @@ require.extensions['.jpg'] = function () {return null;};
 
 // Configure JSDOM and set global variables
 // to simulate a browser environment for tests.
-var jsdom = require('jsdom').jsdom;
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+
+
 
 var exposedProperties = ['window', 'navigator', 'document'];
 
@@ -43,7 +46,7 @@ var exposedProperties = ['window', 'navigator', 'document'];
 //React needs to have a virtual in memory dom
 // with global varaibles: document, window and navigator so react thinks is in a browser
 // hence the importance when doing DOM testing
-global.document = jsdom('');
+global.document = new JSDOM();//jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {

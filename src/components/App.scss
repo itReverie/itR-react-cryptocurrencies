@@ -1,0 +1,27 @@
+a{
+  background-color: deeppink;
+}
+
+.app {
+  text-align: center;
+  color: #ffff99;
+  background-color: deeppink;
+}
+
+.logo {
+  animation: App-logo-spin infinite 2s linear;
+  height: 80px;
+  padding-top: 80px;
+}
+
+.header {
+  background-color: lighten(#222, 10%);
+  height: 300px;
+  padding: 20px;
+  color: white;
+}
+
+//@keyframes App-logo-spin {
+//  from { transform: rotate(0deg); }
+//  to { transform: rotate(360deg); }
+//}

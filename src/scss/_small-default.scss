@@ -3,8 +3,87 @@ html {-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
 
 /*  apply a natural box layout model to all elements  */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+/*  ----------------------- BODY --------------------------- */
+body{
+  font-family: $defaultFont;
+  font-weight: $normalWeight;
+  font-size: 16px;
+}
 
-p { color: deeppink}
+
+/*  ----------------------- HEADER --------------------------- */
+//header {
+//  background-color: $primaryColor;
+//  color: $secondaryColor;
+//  padding: 1rem $gutter;
+//} // end of header
+
+/*  ----------------------- NAVIGATION --------------------------- */
+header {
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+  padding: 1rem $gutter;
+
+  a{
+    float: left;
+    width: 25%;
+    border-right: 1px solid rgba(0,0,0,0.3);
+  } // end of li
+
+  a:last-child {border-right: none;}
+
+  a {
+    display: block;
+    text-align: center;
+    font-weight: $boldWeight;
+    padding: .5rem 0;
+    color: $primaryColor;
+    text-decoration: none;
+    transition: background 0.75s ease, color 0.75s ease;
+  } // end of anchors
+
+
+
+  a.active{
+    background-color: darken($secondaryColor, 10%);
+  } // end of active
+
+  a:hover {
+    color:$secondaryColor;
+    background-color: $primaryColor;
+  } // end hover
+
+
+
+
+} // end nav
+
+
+/*  ----------------------- FOOTER --------------------------- */
+footer {
+  width: 100%;
+  background-color: $primaryColor;
+
+  p {
+    text-align: center;
+    color: $secondaryColor;
+    padding: .75rem 0;
+    font-size: .9rem;
+  } // end p
+
+  p a {color: $secondaryColor;}
+
+} // end footer
+
+
+/*----- Clearfix: Force an Element not to collapse -----*/
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 
 
 
