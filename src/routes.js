@@ -7,6 +7,6 @@ import PortfolioPage from './components/portfolio/PortfolioPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage}/>
-    <Route path="portfolio" />
+    <Route path="portfolio" component={PortfolioPage} />
   </Route>
 );

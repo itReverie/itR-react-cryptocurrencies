@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 import Footer from "./common/Footer";
 import styles from './App.scss';
 
-console.log(styles);
 
 class App extends React.Component {
   render(){
