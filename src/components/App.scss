@@ -1,0 +1,17 @@
+.app {
+  text-align: center;
+  background-color: fuchsia;
+}
+
+.logo {
+  animation: App-logo-spin infinite 2s linear;
+  height: 80px;
+  padding-top: 80px;
+}
+
+.header {
+  background-color: lighten(#222, 10%);
+  height: 300px;
+  padding: 20px;
+  color: white;
+}
