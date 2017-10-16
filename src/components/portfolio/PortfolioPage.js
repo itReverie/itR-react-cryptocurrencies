@@ -1,11 +1,11 @@
-import React , {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as currenciesActions from '../../actions/currenciesActions';
 import CryptoCurrencyList from '../cryptoCurrency/CryptoCurrencyList';
 import ReturnPercentage from '../returnPercentage/ReturnPercentage';
 import toastr from 'toastr';
-
+import PropTypes from 'prop-types';
 
 class PortfolioPage extends React.Component
 {
