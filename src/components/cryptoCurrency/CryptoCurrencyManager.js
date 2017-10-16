@@ -1,43 +1,41 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as currenciesActions from '../../actions/currenciesActions';
 import CryptoCurrencyRow from './CryptoCurrencyRow';
-import toastr from 'toastr';
+import PropTypes from 'prop-types';
 
 class CryptoCurrencyManager extends React.Component {
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
      this.state ={
        cryptoCurrency: Object.assign({},this.props.cryptoCurrency),
        cryptoCurrencyName: this.props.cryptoCurrency.name,
+       index: this.props.index,
        errors: {}
      };
-    this.updateCryptoAmount = this.updateCryptoAmount.bind(this);
   }
 
-  updateCryptoAmount(amount){
-    //Update the state of this array specifically the currency that was changed
-    let cryptoCurrency = Object.assign({},this.state.cryptoCurrency);
-    cryptoCurrency.name = this.state.cryptoCurrencyName;
-    cryptoCurrency.amount = amount;
 
-    this.props.actions.updateCurrencyAmount(this.props.currencies ,  cryptoCurrency);
-      // .then(this.setState({ cryptoCurrency: cryptoCurrency}))
-      // .catch(error=> {toastr.error(error);
-      //   this.setState({saving:false});
-      // });
-
-    // return new Promise((resolve, reject) => {
-    //   resolve(Object.assign([], dispatch(loadCurrenciesSuccess(dispatch(updateCurrencyAmountSuccess(currency))))));
-    // });
-  }
+  // componentWillMount()
+  // {
+  //   this.updateCryptoAmount = this.updateCryptoAmount.bind(this);
+  // }
+  //
+  // updateCryptoAmount(event){
+  //   //Update the state of this array specifically the currency that was changed
+  //   //let cryptoCurrency = Object.assign({},this.state.cryptoCurrency);
+  //
+  //   //here i am receiving a number (1)
+  //
+  // }
 
   render(){
     return (
-      <CryptoCurrencyRow key={this.props.cryptoCurrency.name}
-                         cryptoCurrency={this.props.cryptoCurrency}
+      <CryptoCurrencyRow key={this.state.cryptoCurrency.name}
+                         index={this.props.index}
+                         cryptoCurrency={this.state.cryptoCurrency}
                          onChange={this.updateCryptoAmount}
                          errors={this.state.errors}/>
     );
@@ -48,8 +46,9 @@ class CryptoCurrencyManager extends React.Component {
 CryptoCurrencyManager.propTypes={
   cryptoCurrency: PropTypes.object.isRequired,
   currencies: PropTypes.array.isRequired,
+  index:PropTypes.number,
   actions:  PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
+  //onChange: PropTypes.func.isRequired,
   errors :  PropTypes.object
 };
 
@@ -59,7 +58,9 @@ CryptoCurrencyManager.propTypes={
 //-------------------------------------------------------------------
 function mapStateToProps(state) {
 
-  return {currency: state.cryptoCurrency};
+  return {currency: state.cryptoCurrency,
+          index: state.index
+  };
 }
 
 

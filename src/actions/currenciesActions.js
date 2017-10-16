@@ -32,46 +32,14 @@ export function loadCurrenciesSuccess(currencies)
 //-------------------------
 // UPDATE CURRENCY
 //--------------------------
-export function updateCurrencyAmount(currrencies, currencyUpdated){
+export function updateCurrencyAmount(currency){
   return function (dispatch) {
-
-    //OPTION 1
-    //let test= currrencies.filter(currency => currency.name !== currencyUpdated.name);
-    //debugger;
-    //test.push(currencyUpdated);
-    //debugger;
-
-    //OPTION 2
-    let test= [
-           ...currrencies.filter(currency => currency.name !== currencyUpdated.name),
-           Object.assign({},currencyUpdated)
-         ];
-    return dispatch(updateCurrencyAmountSuccess(currrencies));
-
-
-    //return dispatch(loadCurrenciesSuccess(cryptoCurrencies));
-
-
-
-    //Correct way
-    // dispatch(updateCurrencyAmountSuccess(currency))
-    //   .then(cryptoCurrencies => {dispatch(loadCurrenciesSuccess(cryptoCurrencies));})
-    //   .catch(error => {
-    //     throw (error);
-    //   });
-
-
-        //let cryptoCurrencies=dispatch(updateCurrencyAmountSuccess(currency));
-        // return new Promise((resolve, reject) => {
-        //   resolve(Object.assign([], dispatch(loadCurrenciesSuccess(dispatch(updateCurrencyAmountSuccess(currency))))));
-        // });
-
-
+     dispatch(updateCurrencyAmountSuccess(currency));
   };
 }
 
-export function updateCurrencyAmountSuccess(currencies){
-  return {type : types.UPDATE_CURRENCY_AMOUNT_SUCCESS, currencies};
+function updateCurrencyAmountSuccess(currency){
+  return {type : types.UPDATE_CURRENCY_AMOUNT_SUCCESS, currency};
 }
 
 //-------------------------
@@ -85,6 +53,8 @@ export function calculateReturnPercentage(currencies){
 
   };
 }
+
+
 
 
 

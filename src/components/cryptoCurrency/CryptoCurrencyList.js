@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import CryptoCurrencyManager from './CryptoCurrencyManager';
+import PropTypes from 'prop-types';
 
 const CryptoCurrencyList = ({cryptoCurrencies, errors, onChange}) => {
   return (
@@ -11,8 +12,9 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors, onChange}) => {
       </tr>
       </thead>
       <tbody>
-      {cryptoCurrencies.map( currency =>
+      {cryptoCurrencies.map( (currency,index ) =>
         <CryptoCurrencyManager key={currency.name}
+                               index={index}
                                cryptoCurrency={currency}
                                currencies={cryptoCurrencies}
                                onChange={onChange}
@@ -25,8 +27,8 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors, onChange}) => {
 
 CryptoCurrencyList.propTypes={
   cryptoCurrencies:PropTypes.array.isRequired,
-  errors : React.PropTypes.object,
-  onChange : React.PropTypes.func.isRequired
+  errors : PropTypes.object,
+  onChange :PropTypes.func.isRequired
 
 };
 
