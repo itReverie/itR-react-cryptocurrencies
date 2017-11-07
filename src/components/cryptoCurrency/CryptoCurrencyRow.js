@@ -7,7 +7,6 @@ import * as currenciesActions from '../../actions/currenciesActions';
 
 class CryptoCurrencyRow extends React.Component
 {
-
     constructor(props){
 
       super(props);
@@ -22,7 +21,6 @@ class CryptoCurrencyRow extends React.Component
     {
       this.updateCurrencyAmount = this.updateCurrencyAmount.bind(this);
     }
-
 
     updateCurrencyAmount(event)
     {
@@ -54,7 +52,6 @@ CryptoCurrencyRow.propTypes = {
   cryptoCurrency: PropTypes.object.isRequired,
   index: PropTypes.number,
   errors : PropTypes.object,
-  onChange : PropTypes.func.isRequired,
   actions: PropTypes.object.isRequired
 };
 

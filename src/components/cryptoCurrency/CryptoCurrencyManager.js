@@ -17,26 +17,11 @@ class CryptoCurrencyManager extends React.Component {
      };
   }
 
-
-  // componentWillMount()
-  // {
-  //   this.updateCryptoAmount = this.updateCryptoAmount.bind(this);
-  // }
-  //
-  // updateCryptoAmount(event){
-  //   //Update the state of this array specifically the currency that was changed
-  //   //let cryptoCurrency = Object.assign({},this.state.cryptoCurrency);
-  //
-  //   //here i am receiving a number (1)
-  //
-  // }
-
   render(){
     return (
       <CryptoCurrencyRow key={this.state.cryptoCurrency.name}
                          index={this.props.index}
                          cryptoCurrency={this.state.cryptoCurrency}
-                         onChange={this.updateCryptoAmount}
                          errors={this.state.errors}/>
     );
   }
@@ -48,7 +33,6 @@ CryptoCurrencyManager.propTypes={
   currencies: PropTypes.array.isRequired,
   index:PropTypes.number,
   actions:  PropTypes.object.isRequired,
-  //onChange: PropTypes.func.isRequired,
   errors :  PropTypes.object
 };
 

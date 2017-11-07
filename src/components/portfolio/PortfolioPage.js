@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as currenciesActions from '../../actions/currenciesActions';
 import CryptoCurrencyList from '../cryptoCurrency/CryptoCurrencyList';
 import ReturnPercentage from '../returnPercentage/ReturnPercentage';
-import toastr from 'toastr';
 import PropTypes from 'prop-types';
 
 class PortfolioPage extends React.Component
@@ -19,21 +18,8 @@ class PortfolioPage extends React.Component
       saving: false
     };
 
-    //this.updateCryptoAmount = this.updateCryptoAmount.bind(this);
     this.calculateReturnPercentage = this.calculateReturnPercentage.bind(this);
   }
-
-
-  // updateCryptoAmount(currency){
-  //   //Update the state of this array specifically the currency that was changed
-  //
-  //   //let cryptoCurrency = Object.assign({},this.state.cryptoCurrency);
-  //   //cryptoCurrency.amount = amount;
-  //
-  //   this.props.actions.updateCurrencyAmount(currency);
-  //   debugger;
-  //   //return this.setState({cryptoCurrency: cryptoCurrency});
-  // }
 
   calculateReturnPercentage(){
         let currenciesWithAmount=this.props.currencies.filter(currency => currency.amount>0);
@@ -45,13 +31,11 @@ class PortfolioPage extends React.Component
   }
 
  render(){
-
-    const {currencies} = this.props.currencies;
    return (
      <div>
        <h1>Cryptocurrencies Portfolio</h1>
 
-       <CryptoCurrencyList cryptoCurrencies={this.props.currencies} onChange={this.updateCryptoAmount}/>
+       <CryptoCurrencyList cryptoCurrencies={this.props.currencies} />
 
        <input type="submit"
               value="Calculate"
