@@ -17,7 +17,10 @@ class PortfolioPage extends React.Component
       returnPercentage: 10,
       saving: false
     };
+  }
 
+  componentWillMount()
+  {
     this.calculateReturnPercentage = this.calculateReturnPercentage.bind(this);
   }
 
@@ -61,7 +64,6 @@ PortfolioPage.propTypes={
 //Redux connect section
 //-------------------------------------------------------------------
 function mapStateToProps(state) {
-
     return {currencies: state.currencies};
 }
 

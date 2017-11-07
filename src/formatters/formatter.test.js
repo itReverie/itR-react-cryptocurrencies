@@ -7,9 +7,9 @@ describe ('Formatting Currencies', ()=>{
     it('should return a currency object with name and amount', ()=>{
       const currencies= ['BTC','ETH','LTC'];
 
-      const expected = [{name:'BTC', amount:0},
-                        {name:'ETH', amount:0},
-                        {name:'LTC', amount:0}];
+      const expected = [{id:1, name:'BTC', amount:0},
+                        {id:2, name:'ETH', amount:0},
+                        {id:3, name:'LTC', amount:0}];
 
       expect(formatCurrencies(currencies)).toEqual(expected);
 

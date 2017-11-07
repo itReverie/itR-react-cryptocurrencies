@@ -12,7 +12,6 @@ class CryptoCurrencyRow extends React.Component
       super(props);
       this.state={
         cryptoCurrency : Object.assign({},this.props.cryptoCurrency),
-        index : this.props.index,
         errors : this.props.errors
       };
     }
@@ -50,17 +49,14 @@ class CryptoCurrencyRow extends React.Component
 
 CryptoCurrencyRow.propTypes = {
   cryptoCurrency: PropTypes.object.isRequired,
-  index: PropTypes.number,
   errors : PropTypes.object,
   actions: PropTypes.object.isRequired
 };
 
-
 function mapStateToProps(state) {
 
   return {
-    currency: state.cryptoCurrency,
-    index: state.index
+    currency: state.cryptoCurrency
   };
 }
 

@@ -11,16 +11,13 @@ class CryptoCurrencyManager extends React.Component {
     super(props);
      this.state ={
        cryptoCurrency: Object.assign({},this.props.cryptoCurrency),
-       cryptoCurrencyName: this.props.cryptoCurrency.name,
-       index: this.props.index,
        errors: {}
      };
   }
 
   render(){
     return (
-      <CryptoCurrencyRow key={this.state.cryptoCurrency.name}
-                         index={this.props.index}
+      <CryptoCurrencyRow key={this.state.cryptoCurrency.id}
                          cryptoCurrency={this.state.cryptoCurrency}
                          errors={this.state.errors}/>
     );
@@ -30,7 +27,6 @@ class CryptoCurrencyManager extends React.Component {
 
 CryptoCurrencyManager.propTypes={
   cryptoCurrency: PropTypes.object.isRequired,
-  index:PropTypes.number,
   actions:  PropTypes.object.isRequired,
   errors :  PropTypes.object
 };
@@ -40,10 +36,7 @@ CryptoCurrencyManager.propTypes={
 //Redux connect section
 //-------------------------------------------------------------------
 function mapStateToProps(state) {
-
-  return {currency: state.cryptoCurrency,
-          index: state.index
-  };
+  return {currency: state.cryptoCurrency};
 }
 
 

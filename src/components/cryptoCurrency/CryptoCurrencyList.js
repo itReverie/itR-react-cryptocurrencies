@@ -12,9 +12,8 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors /* onChange */}) => {
       </tr>
       </thead>
       <tbody>
-      {cryptoCurrencies.map( (currency,index ) =>
-        <CryptoCurrencyManager key={currency.name}
-                               index={index}
+      {cryptoCurrencies.map( (currency ) =>
+        <CryptoCurrencyManager key={currency.id}
                                cryptoCurrency={currency}
                                errors={errors}/>
       )}
