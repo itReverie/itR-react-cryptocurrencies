@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import NumericInput from 'react-numeric-input';
-
+import PropTypes from 'prop-types';
 
 const NumberInput = ({name,  onChange, placeholder, value, error}) => {
   let wrapperClass = 'form-group';
