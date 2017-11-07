@@ -8,12 +8,11 @@ export default function currencyReducer(state = initialState.currencies, action)
       return action.currencies;
 
     case types.UPDATE_CURRENCY_AMOUNT_SUCCESS: {
-
-      const updatedItems = state.map(item => {
-        if (item.id === action.currency.id) {
-          return action.currency;
+      const updatedItems = state.map(currency => {
+        if (currency.id === action.currency.id) {
+          return Object.assign({},action.currency);
         }
-        return item;
+        return Object.assign({},currency);
       });
       return updatedItems;
     }

@@ -25,8 +25,7 @@ class CryptoCurrencyRow extends React.Component
 CryptoCurrencyRow.propTypes = {
   cryptoCurrency: PropTypes.object.isRequired,
   onChange : PropTypes.func.isRequired,
-  errors : PropTypes.object,
-  actions: PropTypes.object.isRequired
+  errors : PropTypes.object
 };
 
 
