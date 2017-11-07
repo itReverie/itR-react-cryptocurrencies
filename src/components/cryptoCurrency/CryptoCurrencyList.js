@@ -16,7 +16,6 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors /* onChange */}) => {
         <CryptoCurrencyManager key={currency.name}
                                index={index}
                                cryptoCurrency={currency}
-                               currencies={cryptoCurrencies}
                                errors={errors}/>
       )}
       </tbody>

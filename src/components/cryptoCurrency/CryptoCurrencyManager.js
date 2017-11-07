@@ -30,7 +30,6 @@ class CryptoCurrencyManager extends React.Component {
 
 CryptoCurrencyManager.propTypes={
   cryptoCurrency: PropTypes.object.isRequired,
-  currencies: PropTypes.array.isRequired,
   index:PropTypes.number,
   actions:  PropTypes.object.isRequired,
   errors :  PropTypes.object
