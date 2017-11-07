@@ -1,34 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import NumberInput from '../common/NumberInput';
 import PropTypes from 'prop-types';
-import * as currenciesActions from '../../actions/currenciesActions';
 
 class CryptoCurrencyRow extends React.Component
 {
-    constructor(props){
-
-      super(props);
-      this.state={
-        cryptoCurrency : Object.assign({},this.props.cryptoCurrency),
-        errors : this.props.errors
-      };
-    }
-
-    componentWillMount()
-    {
-      this.updateCurrencyAmount = this.updateCurrencyAmount.bind(this);
-    }
-
-    updateCurrencyAmount(event)
-    {
-      let amountCurrencyChanged= event;
-      let currentCryptoCurrency=this.props.cryptoCurrency;
-      currentCryptoCurrency.amount = amountCurrencyChanged;
-      this.props.actions.updateCurrencyAmount(currentCryptoCurrency);
-    }
-
   render ()
   {
     return (
@@ -38,8 +13,8 @@ class CryptoCurrencyRow extends React.Component
           name={this.props.cryptoCurrency.name}
           placeholder="Amount"
           value={this.props.cryptoCurrency.amount}
-          onChange={this.updateCurrencyAmount}
-          error={this.state.cryptoCurrency.errors}/>
+          onChange={this.props.onChange}
+          error={this.props.errors}/>
         </td>
       </tr>
     );
@@ -49,22 +24,12 @@ class CryptoCurrencyRow extends React.Component
 
 CryptoCurrencyRow.propTypes = {
   cryptoCurrency: PropTypes.object.isRequired,
+  onChange : PropTypes.func.isRequired,
   errors : PropTypes.object,
   actions: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
 
-  return {
-    currency: state.cryptoCurrency
-  };
-}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(currenciesActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CryptoCurrencyRow);
+export default CryptoCurrencyRow;
 

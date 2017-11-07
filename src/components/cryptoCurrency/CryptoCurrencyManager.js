@@ -15,10 +15,25 @@ class CryptoCurrencyManager extends React.Component {
      };
   }
 
+  updateCurrencyAmount(event)
+  {
+    let amountCurrencyChanged= event;
+    let currentCryptoCurrency=this.props.cryptoCurrency;
+    currentCryptoCurrency.amount = amountCurrencyChanged;
+    this.props.actions.updateCurrencyAmount(currentCryptoCurrency);
+  }
+
+
+  componentWillMount()
+  {
+    this.updateCurrencyAmount = this.updateCurrencyAmount.bind(this);
+  }
+
   render(){
     return (
       <CryptoCurrencyRow key={this.state.cryptoCurrency.id}
                          cryptoCurrency={this.state.cryptoCurrency}
+                         onChange={this.updateCurrencyAmount}
                          errors={this.state.errors}/>
     );
   }
