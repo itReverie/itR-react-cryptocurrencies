@@ -14,7 +14,7 @@ class PortfolioPage extends React.Component
 
     this.state={
       currencies: Object.assign({}, this.props.currencies),
-      returnPercentage: 10,
+      returnPercentage: 0,
       saving: false
     };
   }

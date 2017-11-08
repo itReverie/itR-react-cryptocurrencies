@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Link, NavLink  } from 'react-router-dom';
 
 //Import Views
-import App from './components/App';
 import HomePage from './components/home/HomePage';
 import PortfolioPage from './components/portfolio/PortfolioPage';
 
