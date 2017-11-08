@@ -5,6 +5,7 @@ import * as currenciesActions from '../../actions/currenciesActions';
 import CryptoCurrencyList from '../cryptoCurrency/CryptoCurrencyList';
 import ReturnPercentage from '../returnPercentage/ReturnPercentage';
 import PropTypes from 'prop-types';
+import Button from 'material-ui/Button'
 
 class PortfolioPage extends React.Component
 {
@@ -40,10 +41,11 @@ class PortfolioPage extends React.Component
 
        <CryptoCurrencyList cryptoCurrencies={this.props.currencies} />
 
-       <input type="submit"
-              value="Calculate"
-              className="btn btn-primary"
-              onClick={this.calculateReturnPercentage} />
+       <Button
+         raised
+         onClick={this.calculateReturnPercentage} >
+         Calculate
+       </Button>
 
        <ReturnPercentage returnPercentage={this.state.returnPercentage} />
 
