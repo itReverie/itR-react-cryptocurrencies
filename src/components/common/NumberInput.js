@@ -13,7 +13,7 @@ const NumberInput = ({name,  onChange, placeholder, value, error}) => {
       <NumericInput
         precision={0}
         min={0}
-        max="1000"
+        max={1000}
         name={name}
         className="form-control"
         placeholder={placeholder}

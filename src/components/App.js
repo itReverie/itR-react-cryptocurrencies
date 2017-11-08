@@ -4,8 +4,23 @@ import React from 'react';
 import Header from './common/Header';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-
+//import Perf from 'react-addons-perf';
+// if(typeof window !== 'undefined') {
+//   window.Perf = Perf;
+// }
 class App extends React.Component {
+
+
+  // componentDidMount() {
+  //   console.log(window);
+  //   window.Perf = Perf;
+  //   Perf.start();
+  //   window.setImmediate(()=>{Perf.start();});
+  //   window.setTimeout(()=>{ Perf.stop();
+  //     Perf.printWasted();},5000);
+  // }
+
+
   render(){
     return (
       <div className="container-fluid">
@@ -16,6 +31,8 @@ class App extends React.Component {
     );
   }
 }
+
+
 
 App.propTypes={
   children: PropTypes.object.isRequired,
