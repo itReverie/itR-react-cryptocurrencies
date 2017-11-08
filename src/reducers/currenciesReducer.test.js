@@ -7,9 +7,9 @@ describe('Portfolio Reducer', () => {
 
     // arrange
     const initialState = [];
-    const currencies = [{name:'BTC', amount:3},
-                        {name:'ETH', amount:20},
-                        {name:'LTC', amount:6}];
+    const currencies = [{id: 0, name:'BTC', amount:3},
+                        {id: 1, name:'ETH', amount:20},
+                        {id: 2, name:'LTC', amount:6}];
 
     const action = actions.loadCurrenciesSuccess(currencies);
 

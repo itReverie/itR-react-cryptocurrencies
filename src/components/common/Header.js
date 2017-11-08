@@ -1,5 +1,5 @@
 import React  from 'react';
-import {Link, IndexLink } from 'react-router';
+import {Link, NavLink } from 'react-router-dom';
 import LoadingDots from './LoadingDots';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const Header =({loading})=>{
  return (
     <nav>
-      <IndexLink to="/" activeClassName="active">Home</IndexLink>
+      <NavLink to="/" activeClassName="active">Home</NavLink>
       {" | "}
       <Link to="/portfolio" activeClassName="active">Portfolio</Link>
     </nav>

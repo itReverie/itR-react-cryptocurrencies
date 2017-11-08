@@ -20,13 +20,14 @@ class App extends React.Component {
   //     Perf.printWasted();},5000);
   // }
 
+  // {this.props.children}
 
   render(){
     return (
       <div className="container-fluid">
         <Header
         loading={this.props.loading}/>
-        {this.props.children}
+
       </div>
     );
   }

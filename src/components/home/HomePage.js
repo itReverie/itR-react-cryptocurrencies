@@ -1,6 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
+
+//TODO: Maybe add one example to make use of Link in react-router-dom
 class HomePage extends React.Component{
   render()
   {
