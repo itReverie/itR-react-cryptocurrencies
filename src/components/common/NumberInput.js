@@ -19,7 +19,7 @@ const NumberInput = ({name,  onChange, placeholder, value, error}) => {
         placeholder={placeholder}
         value={value}
         style={false}
-        onChange={onChange}/>
+        onChange={onChange} />
 
 
     </div>

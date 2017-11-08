@@ -9,9 +9,9 @@ const Routes = () => (
   <div className="primary-layout">
     <header>
       <nav>
-        <NavLink to="/" activeClassName="active">Home</NavLink>
+        <NavLink to="/" activeclassname="active">Home</NavLink>
         {" | "}
-        <Link to="/portfolio" activeClassName="active">Portfolio</Link>
+        <Link to="/portfolio" activeclassname="active">Portfolio</Link>
       </nav>
     </header>
     <main>

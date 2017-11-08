@@ -43,7 +43,7 @@ class PortfolioPage extends React.Component
        <input type="submit"
               value="Calculate"
               className="btn btn-primary"
-              onClick={this.calculateReturnPercentage}/>
+              onClick={this.calculateReturnPercentage} />
 
        <ReturnPercentage returnPercentage={this.state.returnPercentage} />
 

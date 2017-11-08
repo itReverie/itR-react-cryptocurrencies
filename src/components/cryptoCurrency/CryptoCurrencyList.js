@@ -15,7 +15,7 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors /* onChange */}) => {
       {cryptoCurrencies.map( (currency ) =>
         <CryptoCurrencyManager key={currency.id}
                                cryptoCurrency={currency}
-                               errors={errors}/>
+                               errors={errors} />
       )}
       </tbody>
     </table>

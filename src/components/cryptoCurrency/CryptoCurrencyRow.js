@@ -14,7 +14,7 @@ class CryptoCurrencyRow extends React.Component
           placeholder="Amount"
           value={this.props.cryptoCurrency.amount}
           onChange={this.props.onChange}
-          error={this.props.errors}/>
+          error={this.props.errors} />
         </td>
       </tr>
     );

@@ -1,9 +1,17 @@
 {
-  "presets": ["react", "es2015"],
+  "presets": ["react",
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }],"stage-2"],
   "env": {
     "development": {
-      "presets": ["es2015","react-hmre" ]
+      "presets": [
+        ["react-hmre"]
+      ]
     }
-  }
+  },
+  "sourceMaps": true,
+  "retainLines": true
 }
-

@@ -34,7 +34,7 @@ class CryptoCurrencyManager extends React.Component {
       <CryptoCurrencyRow key={this.props.cryptoCurrency.id}
                          cryptoCurrency={this.props.cryptoCurrency}
                          onChange={this.updateCurrencyAmount}
-                         errors={this.props.errors}/>
+                         errors={this.props.errors} />
     );
   }
 }
