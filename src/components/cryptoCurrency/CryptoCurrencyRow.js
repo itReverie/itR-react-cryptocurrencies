@@ -2,7 +2,7 @@ import React from 'react';
 import NumberInput from '../common/NumberInput';
 import PropTypes from 'prop-types';
 
-class CryptoCurrencyRow extends React.Component
+class CryptoCurrencyRow extends React.PureComponent
 {
   render ()
   {

@@ -7,7 +7,7 @@ import ReturnPercentage from '../returnPercentage/ReturnPercentage';
 import PropTypes from 'prop-types';
 import Button from 'material-ui/Button'
 
-class PortfolioPage extends React.Component
+class PortfolioPage extends React.PureComponent
 {
 
   constructor (props, context) {

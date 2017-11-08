@@ -5,7 +5,7 @@ import * as currenciesActions from '../../actions/currenciesActions';
 import CryptoCurrencyRow from './CryptoCurrencyRow';
 import PropTypes from 'prop-types';
 
-class CryptoCurrencyManager extends React.Component {
+class CryptoCurrencyManager extends React.PureComponent {
 
   constructor(props) {
     super(props);
