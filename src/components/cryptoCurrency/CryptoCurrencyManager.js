@@ -17,9 +17,8 @@ class CryptoCurrencyManager extends React.PureComponent {
 
   updateCurrencyAmount(event)
   {
-    let amountCurrencyChanged= event;
     let currentCryptoCurrency = Object.assign({},this.props.cryptoCurrency);
-    currentCryptoCurrency.amount = amountCurrencyChanged;
+    currentCryptoCurrency.amount = event.target.value;
     this.props.actions.updateCurrencyAmount(currentCryptoCurrency);
   }
 

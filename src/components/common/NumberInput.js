@@ -1,30 +1,45 @@
 import React from 'react';
-import NumericInput from 'react-numeric-input';
+import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
 
-const NumberInput = ({name,  onChange, placeholder, value, error}) => {
-  let wrapperClass = 'form-group';
-  if(error && error.length > 0){
-    wrapperClass += " "+ 'has-error';
+//const NumberInput = ({name,  onChange, placeholder, value, error}) => {
+class NumberInput extends React.PureComponent
+{
+
+  // constructor(props) {
+  //   super(props);
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.onClick = this.onClick.bind(this);
+  // }
+
+
+  render() {
+    return (
+      <TextField
+        onChange={this.props.onChange}
+        name={this.props.name}
+        value={this.props.value}
+        fullWidth={true}
+        type="number"
+      />
+    );
   }
-  return (
-    <div className={wrapperClass}>
 
-      <NumericInput
-        precision={0}
-        min={0}
-        max={1000}
-        name={name}
-        className="form-control"
-        placeholder={placeholder}
-        value={value}
-        style={false}
-        onChange={onChange} />
+  // handleChange(event, newValue){
+  //   event.persist(); // allow native event access (see: https://facebook.github.io/react/docs/events.html)
+  //   // give react a function to set the state asynchronously.
+  //   // here it's using the "name" value set on the TextField
+  //   // to set state.person.[firstname|lastname].
+  //   this.setState((state) => state.person[event.target.name] = newValue);
+  //
+  // }
 
-
-    </div>
-  );
-};
+  // handleChange (e) {
+  //
+  //     [e.target.name]: e.target.value;
+  //
+  // }
+}
 
 NumberInput.propTypes = {
   name: PropTypes.string.isRequired,
