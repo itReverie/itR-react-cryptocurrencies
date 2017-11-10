@@ -5,7 +5,7 @@ export function formatCurrencies(listOfCurrencies) {
     return {
       id: index,
       name: currency.name,
-      amount: 0
+      amount: null
     };
   });
 }

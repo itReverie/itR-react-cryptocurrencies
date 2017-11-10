@@ -1,27 +1,47 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as errorActions from '../../actions/errorActions';
+import NumericInput from 'react-numeric-input';
 
 //const NumberInput = ({name,  onChange, placeholder, value, error}) => {
-class NumberInput extends React.PureComponent
+class NumberInput extends React.Component
 {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.onClick = this.onClick.bind(this);
-  // }
+
+  constructor(props) {
+    super(props);
+    this.state ={
+      error: Object.assign({},this.props.error)
+    };
+
+    //this.handleChange = this.handleChange.bind(this);
+    //this.onClick = this.onClick.bind(this);
+  }
 
 
   render() {
+    // let errorContent = this.state.error.message;
+    // if(this.props.error && this.props.error.length > 0){
+    //   errorContent += "background ";
+    // }
+
     return (
-      <TextField
-        onChange={this.props.onChange}
+      <div style={{color:'red'}}>
+      <NumericInput
+        key = {this.props.name}
+        precision={0}
+        min={0}
         name={this.props.name}
+        className="form-control"
+        placeholder={this.props.placeholder}
         value={this.props.value}
-        fullWidth={true}
-        type="number"
+        onChange={this.props.onChange}
+        style={false}
       />
+        <div>{this.props.error.message}</div>
+      </div>
     );
   }
 
@@ -46,7 +66,24 @@ NumberInput.propTypes = {
   onChange : PropTypes.func.isRequired,
   placeholder : PropTypes.string,
   value: PropTypes.number,
-  error: PropTypes.string
+  error: PropTypes.object
 };
 
-export default NumberInput;
+//-------------------------------------------------------------------
+//Redux connect section
+//-------------------------------------------------------------------
+function mapStateToProps(state) {
+  return {error: state.error};
+}
+
+
+function mapDispatchToProps (dispatch)
+{
+  return {
+    actions: bindActionCreators(errorActions,dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NumberInput);
+

@@ -16,6 +16,9 @@ export default function currencyReducer(state = initialState.currencies, action)
       });
       return updatedItems;
     }
+
+
+
     default:
       return state;
 
