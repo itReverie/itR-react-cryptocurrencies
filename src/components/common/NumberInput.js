@@ -5,19 +5,29 @@ import {bindActionCreators} from 'redux';
 import * as errorActions from '../../actions/errorActions';
 import NumericInput from 'react-numeric-input';
 
-//const NumberInput = ({name,  onChange, placeholder, value, error}) => {
 class NumberInput extends React.Component
 {
-
-
   constructor(props) {
     super(props);
     this.state ={
       error: Object.assign({},this.props.error)
     };
+  }
 
-    //this.handleChange = this.handleChange.bind(this);
-    //this.onClick = this.onClick.bind(this);
+  onKeyUp(e) {
+    let amountCurrencyChanged= e.target.value;
+
+    if( /\d/.test(amountCurrencyChanged)) {
+      this.setState({error:{message:''}});
+    }else{
+      this.setState({error:{message:'Invalid number.'}});
+
+    }
+  }
+
+  componentWillMount()
+  {
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
 
@@ -28,7 +38,7 @@ class NumberInput extends React.Component
     // }
 
     return (
-      <div style={{color:'red'}}>
+      <div>
       <NumericInput
         key = {this.props.name}
         precision={0}
@@ -38,27 +48,14 @@ class NumberInput extends React.Component
         placeholder={this.props.placeholder}
         value={this.props.value}
         onChange={this.props.onChange}
+        onKeyUp={this.onKeyUp}
         style={false}
       />
-        <div>{this.props.error.message}</div>
+        <div style={{color:'red'}}>{this.state.error.message}</div>
       </div>
     );
   }
 
-  // handleChange(event, newValue){
-  //   event.persist(); // allow native event access (see: https://facebook.github.io/react/docs/events.html)
-  //   // give react a function to set the state asynchronously.
-  //   // here it's using the "name" value set on the TextField
-  //   // to set state.person.[firstname|lastname].
-  //   this.setState((state) => state.person[event.target.name] = newValue);
-  //
-  // }
-
-  // handleChange (e) {
-  //
-  //     [e.target.name]: e.target.value;
-  //
-  // }
 }
 
 NumberInput.propTypes = {
