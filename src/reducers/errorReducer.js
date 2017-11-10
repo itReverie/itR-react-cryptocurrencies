@@ -6,7 +6,6 @@ export default function errorReducer(state = initialState.error, action)
   switch (action.type)
   {
     case types.DISPLAY_ERROR_MESSAGE_AMOUNT: {
-      console.log(action);
       return  {message:action.error} ;
     }
 

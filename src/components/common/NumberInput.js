@@ -69,9 +69,9 @@ NumberInput.propTypes = {
   error: PropTypes.object
 };
 
-//-------------------------------------------------------------------
-//Redux connect section
-//-------------------------------------------------------------------
+// -------------------------------------------------------------------
+// Redux connect section
+// -------------------------------------------------------------------
 function mapStateToProps(state) {
   return {error: state.error};
 }
@@ -86,4 +86,7 @@ function mapDispatchToProps (dispatch)
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(NumberInput);
+
+
+//export default NumberInput;
 

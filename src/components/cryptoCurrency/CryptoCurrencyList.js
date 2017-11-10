@@ -2,7 +2,7 @@ import React from 'react';
 import CryptoCurrencyManager from './CryptoCurrencyManager';
 import PropTypes from 'prop-types';
 
-const CryptoCurrencyList = ({cryptoCurrencies, errors /* onChange */}) => {
+const CryptoCurrencyList = ({cryptoCurrencies /*, errors*/}) => {
   return (
     <table className="table">
       <thead>
@@ -15,7 +15,7 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors /* onChange */}) => {
       {cryptoCurrencies.map( (currency ) =>
         <CryptoCurrencyManager key={currency.id}
                                cryptoCurrency={currency}
-                               errors={errors} />
+                               />
       )}
       </tbody>
     </table>
@@ -24,7 +24,7 @@ const CryptoCurrencyList = ({cryptoCurrencies, errors /* onChange */}) => {
 
 CryptoCurrencyList.propTypes={
   cryptoCurrencies:PropTypes.array.isRequired,
-  errors : PropTypes.object
+  //errors : PropTypes.object
 };
 
 export default CryptoCurrencyList;

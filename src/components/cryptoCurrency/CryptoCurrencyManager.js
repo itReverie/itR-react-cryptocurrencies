@@ -17,7 +17,7 @@ class CryptoCurrencyManager extends React.PureComponent {
 
   updateCurrencyAmount(event)
   {
-    //let amountCurrencyChanged= event.target.value;
+    //let amountCurrencyChanged= event.target.value; // If using a TextField from Material Design
     let amountCurrencyChanged= event;
 
     if( /\d/.test(amountCurrencyChanged)) {
@@ -29,7 +29,7 @@ class CryptoCurrencyManager extends React.PureComponent {
     else{
       //it seems that this.setState just has control over this component so to confirm that we will add a quick label in this component
       //this.setState({errors:{message:'Wrooong!!'}});
-      this.props.actions.displayErrorMessageAction('wroong!! :D');
+      this.props.actions.displayErrorMessageAction('Invalid number.');
     }
   }
 
