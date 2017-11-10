@@ -17,3 +17,12 @@ a.active{
 nav{
   padding-top: 20px;
 }
+
+.input-error-border{
+  border: 3px solid red;
+  border-width: 1px;
+}
+.input-error-font{
+  color:red;
+  font-size:12px;
+}

@@ -4,14 +4,6 @@ import PropTypes from 'prop-types';
 
 class CryptoCurrencyRow extends React.PureComponent
 {
-
-  constructor(props) {
-    super(props);
-    this.state ={
-      errors: Object.assign({},this.props.errors)
-    };
-  }
-
   render ()
   {
     return (
@@ -20,7 +12,7 @@ class CryptoCurrencyRow extends React.PureComponent
         <td><NumberInput
           key={this.props.cryptoCurrency.id}
           name={this.props.cryptoCurrency.name}
-          placeholder="Amount"
+          placeholder="0"
           value={this.props.cryptoCurrency.amount}
           onChange={this.props.onChange}
           error={this.props.errors} />
@@ -36,7 +28,6 @@ CryptoCurrencyRow.propTypes = {
   onChange : PropTypes.func.isRequired,
   errors : PropTypes.object
 };
-
 
 
 export default CryptoCurrencyRow;

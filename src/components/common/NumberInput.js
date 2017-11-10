@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as errorActions from '../../actions/errorActions';
 import NumericInput from 'react-numeric-input';
 
 class NumberInput extends React.Component
@@ -10,18 +7,18 @@ class NumberInput extends React.Component
   constructor(props) {
     super(props);
     this.state ={
-      error: Object.assign({},this.props.error)
+      error: Object.assign({},this.props.error),
+      errorStyle:''
     };
   }
 
+  //Validate that the input is a number
   onKeyUp(e) {
     let amountCurrencyChanged= e.target.value;
-
     if( /\d/.test(amountCurrencyChanged)) {
-      this.setState({error:{message:''}});
+      this.setState({error:{message:''},errorStyle:''});
     }else{
-      this.setState({error:{message:'Invalid number.'}});
-
+      this.setState({error:{message:'Invalid number.'},errorStyle:'input-error-border'});
     }
   }
 
@@ -32,11 +29,6 @@ class NumberInput extends React.Component
 
 
   render() {
-    // let errorContent = this.state.error.message;
-    // if(this.props.error && this.props.error.length > 0){
-    //   errorContent += "background ";
-    // }
-
     return (
       <div>
       <NumericInput
@@ -44,14 +36,14 @@ class NumberInput extends React.Component
         precision={0}
         min={0}
         name={this.props.name}
-        className="form-control"
+        className={this.state.errorStyle}
         placeholder={this.props.placeholder}
         value={this.props.value}
         onChange={this.props.onChange}
         onKeyUp={this.onKeyUp}
         style={false}
       />
-        <div style={{color:'red'}}>{this.state.error.message}</div>
+        <div className='input-error-font'>{this.state.error.message}</div>
       </div>
     );
   }
@@ -66,24 +58,6 @@ NumberInput.propTypes = {
   error: PropTypes.object
 };
 
-// -------------------------------------------------------------------
-// Redux connect section
-// -------------------------------------------------------------------
-function mapStateToProps(state) {
-  return {error: state.error};
-}
 
-
-function mapDispatchToProps (dispatch)
-{
-  return {
-    actions: bindActionCreators(errorActions,dispatch)
-  };
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(NumberInput);
-
-
-//export default NumberInput;
+export default NumberInput;
 
