@@ -1,16 +1,11 @@
 import React from 'react';
 import { Route, Link, NavLink  } from 'react-router-dom';
-import {getMuiTheme, MuiThemeProvider} from 'material-ui/styles';
-import theme from './basicTheme';
-
-
 //Import Views
 import HomePage from './components/home/HomePage';
 import PortfolioPage from './components/portfolio/PortfolioPage';
 
 const Routes = () => (
-  <MuiThemeProvider theme={theme}>
-  <div className="primary-layout">
+  <div className="container-fluid">
     <header>
       <nav>
         <NavLink to="/" activeclassname="active">Home</NavLink>
@@ -23,7 +18,6 @@ const Routes = () => (
           <Route path="/portfolio" component={PortfolioPage} />
     </main>
   </div>
-  </MuiThemeProvider>
 );
 
 
