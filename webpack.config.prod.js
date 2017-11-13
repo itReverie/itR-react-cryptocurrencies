@@ -124,15 +124,14 @@ export default {
       },
       {
         test: /(\.css|\.scss|\.sass)$/,
-        exclude: /node_modules/,
-        include: __dirname + '/src/',
+        include: [__dirname + '/src/',__dirname + '/node_modules/bootstrap/dist/css/'],
         use: ExtractTextPlugin.extract({
           use: [
             {
               loader: 'css-loader',
               options: {
-                includePaths: [path.resolve(__dirname, 'src', 'css'), path.resolve(__dirname, 'node_modules', 'css')],
-                minimize: true,
+                includePaths: [path.resolve(__dirname, 'src', 'css')],
+                minimize: false,
                 sourceMap: true
               }
             }, {
