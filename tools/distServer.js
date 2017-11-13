@@ -14,7 +14,7 @@ app.use(express.static('dist'));
 
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.ejs'));
 });
 
 app.listen(port, function(err) {

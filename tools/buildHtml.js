@@ -7,7 +7,7 @@ import colors from 'colors';
 
 /*eslint-disable no-console */
 
-fs.readFile('src/index.html', 'utf8', (err, markup) => {
+fs.readFile('src/index.ejs', 'utf8', (err, markup) => {
   if (err) {
     return console.log(err);
   }
@@ -17,7 +17,7 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
   // since a separate spreadsheet is only utilized for the production build, need to dynamically add this here.
   $('head').prepend('<link rel="stylesheet" href="styles.css">');
 
-  fs.writeFile('dist/index.html', $.html(), 'utf8', function (err) {
+  fs.writeFile('dist/index.ejs', $.html(), 'utf8', function (err) {
     if (err) {
       return console.log(err);
     }
