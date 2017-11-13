@@ -1,17 +1,37 @@
 {
-  "presets": ["react",
-    ["env", {
-      "targets": {
-        "node": "current"
+    "env": {
+      "development": {
+        "presets": [
+          "env",
+          "react",
+          "react-hmre",
+          "stage-1"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "env",
+            {
+              "es2015": {
+                "modules": false
+              },
+              "targets": {
+                "ie": 9,
+                "uglify": true
+              }
+            }
+          ],
+          "react",
+          "stage-1"
+        ]
+      },
+      "test": {
+        "presets": [
+          "env",
+          "react",
+          "stage-1"
+        ]
       }
-    }],"stage-2"],
-  "env": {
-    "development": {
-      "presets": [
-        ["react-hmre"]
-      ]
     }
-  },
-  "sourceMaps": true,
-  "retainLines": true
 }

@@ -54,7 +54,24 @@ export default {
     }),
 
     // Minify JS
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        join_vars: true,
+        if_return: true
+      },
+      output: {
+        comments: false
+      }
+    }),
   ],
   module: {
     rules: [
@@ -133,7 +150,7 @@ export default {
               loader: 'css-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'css')],
-                minimize: false,
+                minimize: true,
                 sourceMap: true
               }
             }, {
