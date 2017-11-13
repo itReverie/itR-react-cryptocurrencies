@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 import cryptoCurrencyApi from '../api/mockCryptoCurrencyApi';
-import {beginAjaxCall,ajaxCallError} from "./ajaxStatusActions";
+import {beginAjaxCall} from "./ajaxStatusActions";
 import {displayErrorMessageAmount} from "./errorActions";
 import {calculateOverallReturn} from "./returnPercentageActions";
 

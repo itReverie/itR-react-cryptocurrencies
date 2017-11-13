@@ -131,8 +131,7 @@ export default {
             {
               loader: 'css-loader',
               options: {
-                include: path.resolve(__dirname, 'src'),
-                modules: true,
+                includePaths: [path.resolve(__dirname, 'src', 'css'), path.resolve(__dirname, 'node_modules', 'css')],
                 minimize: true,
                 sourceMap: true
               }
