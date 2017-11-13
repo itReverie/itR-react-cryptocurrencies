@@ -2,26 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as returnPercentageActions from '../../actions/returnPercentageActions';
-import toastr from 'toastr';
 import PropTypes from 'prop-types';
 
-class ReturnPercentage extends React.Component
+class ReturnPercentage extends React.PureComponent
 {
 
   constructor (props, context) {
     super(props, context);
-
-    //this.calculateOverallReturn = this.calculateOverallReturn.bind(this);
   }
-
-
-  // calculateOverallReturn(){
-  //   this.props.actions.calculateOverallReturn(this.state.currenciesBought)
-  //     .then(alert('ok'))
-  //     .catch(error=> {toastr.error(error);
-  //       this.setState({saving:false});
-  //     });
-  //}
 
   render(){
     return (

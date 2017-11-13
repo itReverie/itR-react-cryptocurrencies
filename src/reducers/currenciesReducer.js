@@ -3,24 +3,22 @@ import initialState from './initialState';
 
 export default function currencyReducer(state = initialState.currencies, action) {
   switch (action.type) {
-    // case types.CALCULATE_RETURN_SUCCESS:
-    //   return [
-    //     ...state.filter(currencies => currencies.amount>0),
-    //     Object.assign({}, action.currencies)
-    //   ];
 
     case types.LOAD_CURRENCIES_SUCCESS:
       return action.currencies;
 
     case types.UPDATE_CURRENCY_AMOUNT_SUCCESS: {
-      const updatedItems = state.map(item => {
-        if (item.index === action.currency.index) {
-          return action.currency;
+      const updatedItems = state.map(currency => {
+        if (currency.id === action.currency.id) {
+          return Object.assign({},action.currency);
         }
-        return item
-      })
-      return updatedItems
+        return Object.assign({},currency);
+      });
+      return updatedItems;
     }
+
+
+
     default:
       return state;
 

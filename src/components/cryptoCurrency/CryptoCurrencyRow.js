@@ -1,36 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import NumberInput from '../common/NumberInput';
 import PropTypes from 'prop-types';
-import * as currenciesActions from '../../actions/currenciesActions';
 
-class CryptoCurrencyRow extends React.Component
+class CryptoCurrencyRow extends React.PureComponent
 {
 
-    constructor(props){
-
-      super(props);
-      this.state={
-        cryptoCurrency : Object.assign({},this.props.cryptoCurrency),
-        index : this.props.index,
-        errors : this.props.errors
-      };
-    }
-
-    componentWillMount()
-    {
-      this.updateCurrencyAmount = this.updateCurrencyAmount.bind(this);
-    }
-
-
-    updateCurrencyAmount(event)
-    {
-      let amountCurrencyChanged= event;
-      let currentCryptoCurrency=this.props.cryptoCurrency;
-      currentCryptoCurrency.amount = amountCurrencyChanged;
-      this.props.actions.updateCurrencyAmount(currentCryptoCurrency);
-    }
+  constructor(props) {
+    super(props);
+    this.state ={
+      errors: Object.assign({},this.props.errors)
+    };
+  }
 
   render ()
   {
@@ -38,11 +18,12 @@ class CryptoCurrencyRow extends React.Component
       <tr>
         <td>{this.props.cryptoCurrency.name}</td>
         <td><NumberInput
+          key={this.props.cryptoCurrency.id}
           name={this.props.cryptoCurrency.name}
           placeholder="Amount"
           value={this.props.cryptoCurrency.amount}
-          onChange={this.updateCurrencyAmount}
-          error={this.state.cryptoCurrency.errors}/>
+          onChange={this.props.onChange}
+          error={this.props.errors} />
         </td>
       </tr>
     );
@@ -52,26 +33,11 @@ class CryptoCurrencyRow extends React.Component
 
 CryptoCurrencyRow.propTypes = {
   cryptoCurrency: PropTypes.object.isRequired,
-  index: PropTypes.number,
-  errors : PropTypes.object,
   onChange : PropTypes.func.isRequired,
-  actions: PropTypes.object.isRequired
+  errors : PropTypes.object
 };
 
 
-function mapStateToProps(state) {
 
-  return {
-    currency: state.cryptoCurrency,
-    index: state.index
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(currenciesActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CryptoCurrencyRow);
+export default CryptoCurrencyRow;
 

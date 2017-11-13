@@ -1,12 +1,24 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-import App from './components/App';
+import { Route, Link, NavLink  } from 'react-router-dom';
+//Import Views
 import HomePage from './components/home/HomePage';
 import PortfolioPage from './components/portfolio/PortfolioPage';
 
-export default (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="portfolio" component={PortfolioPage}/>
-  </Route>
+const Routes = () => (
+  <div className="container-fluid">
+    <header>
+      <nav>
+        <NavLink to="/" activeclassname="active">Home</NavLink>
+        {" | "}
+        <Link to="/portfolio" activeclassname="active">Portfolio</Link>
+      </nav>
+    </header>
+    <main>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/portfolio" component={PortfolioPage} />
+    </main>
+  </div>
 );
+
+
+export default Routes;

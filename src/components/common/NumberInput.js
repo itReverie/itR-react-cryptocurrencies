@@ -1,37 +1,89 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as errorActions from '../../actions/errorActions';
 import NumericInput from 'react-numeric-input';
 
-
-const NumberInput = ({name,  onChange, placeholder, value, error}) => {
-  let wrapperClass = 'form-group';
-  if(error && error.length > 0){
-    wrapperClass += " "+ 'has-error';
+class NumberInput extends React.Component
+{
+  constructor(props) {
+    super(props);
+    this.state ={
+      error: Object.assign({},this.props.error)
+    };
   }
-  return (
-    <div className={wrapperClass}>
 
+  onKeyUp(e) {
+    let amountCurrencyChanged= e.target.value;
+
+    if( /\d/.test(amountCurrencyChanged)) {
+      this.setState({error:{message:''}});
+    }else{
+      this.setState({error:{message:'Invalid number.'}});
+
+    }
+  }
+
+  componentWillMount()
+  {
+    this.onKeyUp = this.onKeyUp.bind(this);
+  }
+
+
+  render() {
+    // let errorContent = this.state.error.message;
+    // if(this.props.error && this.props.error.length > 0){
+    //   errorContent += "background ";
+    // }
+
+    return (
+      <div>
       <NumericInput
+        key = {this.props.name}
         precision={0}
         min={0}
-        max="1000"
-        name={name}
+        name={this.props.name}
         className="form-control"
-        placeholder={placeholder}
-        value={value}
+        placeholder={this.props.placeholder}
+        value={this.props.value}
+        onChange={this.props.onChange}
+        onKeyUp={this.onKeyUp}
         style={false}
-        onChange={onChange}/>
+      />
+        <div style={{color:'red'}}>{this.state.error.message}</div>
+      </div>
+    );
+  }
 
-
-    </div>
-  );
-};
+}
 
 NumberInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange : PropTypes.func.isRequired,
   placeholder : PropTypes.string,
   value: PropTypes.number,
-  error: PropTypes.string
+  error: PropTypes.object
 };
 
-export default NumberInput;
+// -------------------------------------------------------------------
+// Redux connect section
+// -------------------------------------------------------------------
+function mapStateToProps(state) {
+  return {error: state.error};
+}
+
+
+function mapDispatchToProps (dispatch)
+{
+  return {
+    actions: bindActionCreators(errorActions,dispatch)
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(NumberInput);
+
+
+//export default NumberInput;
+

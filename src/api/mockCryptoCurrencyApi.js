@@ -1,12 +1,12 @@
 import delay from './delay';
 import {formatCurrencies, formatCurrentPrices, formatHistoryPrices} from "../formatters/formatter";
 
-const cryptoCurrencies = ["XCP",
-                          "PRO",
-                          "NXTI",
-                          "NIRO",
-                          "VCOIN",
-                          "ADN"];
+const cryptoCurrencies = [{id: 1, name:"XCP"},
+                          {id: 2, name:"PRO"},
+                          {id: 3, name:"NXTI"},
+                          {id: 4, name:"NIRO"},
+                          {id: 5, name:"VCOIN"},
+                          {id: 6, name:"ADN"}];
 
 const currentPrices = [{position24:'1',
                         position:'1',

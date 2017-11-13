@@ -5,50 +5,55 @@ import * as currenciesActions from '../../actions/currenciesActions';
 import CryptoCurrencyRow from './CryptoCurrencyRow';
 import PropTypes from 'prop-types';
 
-class CryptoCurrencyManager extends React.Component {
+class CryptoCurrencyManager extends React.PureComponent {
 
   constructor(props) {
     super(props);
      this.state ={
        cryptoCurrency: Object.assign({},this.props.cryptoCurrency),
-       cryptoCurrencyName: this.props.cryptoCurrency.name,
-       index: this.props.index,
-       errors: {}
+       errors: {}//Object.assign({},{message:'Nop'})
      };
   }
 
+  updateCurrencyAmount(event)
+  {
+    //let amountCurrencyChanged= event.target.value; // If using a TextField from Material Design
+    let amountCurrencyChanged= event;
 
-  // componentWillMount()
-  // {
-  //   this.updateCryptoAmount = this.updateCryptoAmount.bind(this);
-  // }
-  //
-  // updateCryptoAmount(event){
-  //   //Update the state of this array specifically the currency that was changed
-  //   //let cryptoCurrency = Object.assign({},this.state.cryptoCurrency);
-  //
-  //   //here i am receiving a number (1)
-  //
-  // }
+    if( /\d/.test(amountCurrencyChanged)) {
+      let currentCryptoCurrency = Object.assign({},this.props.cryptoCurrency);
+      currentCryptoCurrency.amount = amountCurrencyChanged;
+      this.props.actions.updateCurrencyAmount(currentCryptoCurrency);
+      this.props.actions.displayErrorMessageAction('');
+    }
+    else{
+      //it seems that this.setState just has control over this component so to confirm that we will add a quick label in this component
+      //this.setState({errors:{message:'Wrooong!!'}});
+      this.props.actions.displayErrorMessageAction('Invalid number.');
+    }
+  }
 
+
+  componentWillMount()
+  {
+    this.updateCurrencyAmount = this.updateCurrencyAmount.bind(this);
+  }
+
+  //,<div>{this.state.errors.message}</div>
   render(){
-    return (
-      <CryptoCurrencyRow key={this.state.cryptoCurrency.name}
-                         index={this.props.index}
-                         cryptoCurrency={this.state.cryptoCurrency}
-                         onChange={this.updateCryptoAmount}
-                         errors={this.state.errors}/>
-    );
+    return ([
+      <CryptoCurrencyRow key={this.props.cryptoCurrency.id}
+                         cryptoCurrency={this.props.cryptoCurrency}
+                         onChange={this.updateCurrencyAmount}
+                         errors={this.props.errors} />
+      ]);
   }
 }
 
 
 CryptoCurrencyManager.propTypes={
   cryptoCurrency: PropTypes.object.isRequired,
-  currencies: PropTypes.array.isRequired,
-  index:PropTypes.number,
   actions:  PropTypes.object.isRequired,
-  //onChange: PropTypes.func.isRequired,
   errors :  PropTypes.object
 };
 
@@ -57,10 +62,7 @@ CryptoCurrencyManager.propTypes={
 //Redux connect section
 //-------------------------------------------------------------------
 function mapStateToProps(state) {
-
-  return {currency: state.cryptoCurrency,
-          index: state.index
-  };
+  return {currency: state.cryptoCurrency, error:state.error};
 }
 
 

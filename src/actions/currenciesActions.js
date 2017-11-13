@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import cryptoCurrencyApi from '../api/mockCryptoCurrencyApi';
-import {beginAjaxCall,ajaxCallError} from "./ajaxStatusActions";
+import {beginAjaxCall} from "./ajaxStatusActions";
+import {displayErrorMessageAmount} from "./errorActions";
 import {calculateOverallReturn} from "./returnPercentageActions";
 
 //-------------------------
@@ -41,6 +42,15 @@ export function updateCurrencyAmount(currency){
 function updateCurrencyAmountSuccess(currency){
   return {type : types.UPDATE_CURRENCY_AMOUNT_SUCCESS, currency};
 }
+
+
+export function displayErrorMessageAction(error)
+{
+  return function (dispatch) {
+    dispatch(displayErrorMessageAmount(error));
+  }
+}
+
 
 //-------------------------
 // RETURN PERCENTAGE

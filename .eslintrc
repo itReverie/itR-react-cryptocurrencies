@@ -62,7 +62,11 @@
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
     "react/require-extension": 1,
-    "react/self-closing-comp": 1,
+    "react/self-closing-comp":  ["error", {
+      "component": true,
+      "html": true
+    }],
+    "react/jsx-tag-spacing": [2, { "beforeSelfClosing": "always" }],
     "react/sort-comp": 1,
     "react/wrap-multilines": 1
   }

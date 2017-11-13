@@ -3,9 +3,9 @@
 export function formatCurrencies(listOfCurrencies) {
   return listOfCurrencies.map((currency, index) => {
     return {
-      index: index,
-      name: currency,
-      amount: 0
+      id: index,
+      name: currency.name,
+      amount: null
     };
   });
 }
