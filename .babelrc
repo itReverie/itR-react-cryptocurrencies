@@ -14,7 +14,7 @@
             "env",
             {
               "es2015": {
-                "modules": false
+                "modules": true
               },
               "targets": {
                 "ie": 9,
