@@ -1,5 +1,5 @@
 # itR-crypto-portfolio
-Form in which you can type the number of cryptocurrencies to but and calculates the total.
+Form in which you can type the number of cryptocurrencies to buy and calculates the total.
 
 To run in development:  `npm start -s (optional)`
 
