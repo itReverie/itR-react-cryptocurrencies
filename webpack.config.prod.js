@@ -1,13 +1,12 @@
 // For info about this file refer to webpack and webpack-hot-middleware documentation
 // For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.PORT' : JSON.stringify('5000'),
   __DEV__: false
 };
 
@@ -15,63 +14,35 @@ export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
   },
-  devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
-  entry: path.resolve(__dirname, 'src/index'),
+  devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
+  entry: [
+    // must be first entry to properly set public path
+    './src/webpack-public-path',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?reload=true',
+    path.resolve(__dirname, 'src/index') // Defining path seems necessary for this to work consistently on Windows machines.
+  ],
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: 'bundle.js'
   },
   plugins: [
-    // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
-
-    // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-    new webpack.DefinePlugin(GLOBALS),
-
-    // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[contenthash].css'),
-
-    // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
-    new HtmlWebpackPlugin({
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
+      __DEV__: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.ejs',
-      favicon: 'src/favicon.ico',
       minify: {
-        title:"Cryptocurrencies",
         removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
+        collapseWhitespace: true
       },
       inject: true
-    }),
-
-    // Minify JS
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        join_vars: true,
-        if_return: true
-      },
-      output: {
-        comments: false
-      }
-    }),
+    })
   ],
   module: {
     rules: [
@@ -82,14 +53,7 @@ export default {
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: '[name].[ext]'
-            }
-          }
-        ]
+        use: ['file-loader']
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -98,8 +62,7 @@ export default {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'application/font-woff',
-              name: '[name].[ext]'
+              mimetype: 'application/font-woff'
             }
           }
         ]
@@ -111,8 +74,7 @@ export default {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'application/octet-stream',
-              name: '[name].[ext]'
+              mimetype: 'application/octet-stream'
             }
           }
         ]
@@ -124,8 +86,7 @@ export default {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              mimetype: 'image/svg+xml',
-              name: '[name].[ext]'
+              mimetype: 'image/svg+xml'
             }
           }
         ]
@@ -144,32 +105,31 @@ export default {
       {
         test: /(\.css|\.scss|\.sass)$/,
         include: [__dirname + '/src/',__dirname + '/node_modules/bootstrap/dist/css/'],
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                includePaths: [path.resolve(__dirname, 'src', 'css')],
-                minimize: true,
-                sourceMap: true
-              }
-            }, {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
-            }, {
-              loader: 'sass-loader',
-              options: {
-                includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true
-              }
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'src', 'css')],
+              minimize: true,
+              sourceMap: true
             }
-          ]
-        })
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')
+              ],
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'src', 'scss')],
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
   }
