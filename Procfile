@@ -1,1 +1,1 @@
-web: npm run-script postbuild && node dist/index.js
+web: npm run-script postbuild

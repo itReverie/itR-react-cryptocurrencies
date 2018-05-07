@@ -1,56 +1,30 @@
-// This file configures the development web server
-// which supports hot reloading and synchronized testing.
-
-// Require Browsersync along with webpack and middleware for it
-import browserSync from 'browser-sync';
+import express from 'express';
 import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import path from 'path';
 import config from '../webpack.config.dev';
+import open from 'open';
 
-const bundler = webpack(config);
+/* eslint-disable no-console */
 
-// Run Browsersync and use middleware for Hot Module Replacement
-browserSync({
-  port: process.env.PORT || 5000,
-  ui: {
-    port: process.env.PORT || 5000
-  },
-  server: {
-    baseDir: 'src',
+const app = express();
+const compiler = webpack(config);
+const port = process.env.PORT || 5000;
 
-    middleware: [
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
 
+app.use(require('webpack-hot-middleware')(compiler));
 
-      webpackDevMiddleware(bundler, {
-        // Dev middleware can't access config, so we provide publicPath
-        publicPath: config.output.publicPath,
+app.get('*', function(req, res) {
+  res.sendFile(path.join( __dirname, '../src/index.html'));
+});
 
-        // These settings suppress noisy webpack output so only errors are displayed to the console.
-        noInfo: true,
-        quiet: false,
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: false,
-          chunks: false,
-          chunkModules: false
-        },
-
-        // for other settings see
-        // https://webpack.js.org/guides/development/#using-webpack-dev-middleware
-      }),
-
-      // bundler should be the same as above
-      webpackHotMiddleware(bundler)
-    ]
-  },
-
-  // no need to watch '*.js' here, webpack will take care of it for us,
-  // including full page reloads if HMR won't work
-  files: [
-    'src/*.html'
-  ]
+app.listen(port, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    open(`http://localhost:${port}`);
+  }
 });
